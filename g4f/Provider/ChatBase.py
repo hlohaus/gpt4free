@@ -54,14 +54,3 @@ class ChatBase(AsyncGeneratorProvider):
                 async for stream in response.content.iter_any():
                     response_data += stream.decode()
                     yield stream.decode()
-
-    @classmethod
-    @property
-    def params(cls):
-        params = [
-            ("model", "str"),
-            ("messages", "list[dict[str, str]]"),
-            ("stream", "bool"),
-        ]
-        param = ", ".join([": ".join(p) for p in params])
-        return f"g4f.provider.{cls.__name__} supports: ({param})"
