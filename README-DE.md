@@ -35,7 +35,7 @@ pip install -U g4f
 - [💡 Verwendung](#-verwendung)
   - [Das `g4f` Paket](#das-g4f-paket)
     - [ChatCompletion](#chatcompletion)
-      - [Vervollständigung](#vervollständigung)
+      - [Completion](#completion)
       - [Anbieter](#anbieter)
       - [Cookies erforderlich](#cookies-erforderlich)
       - [Async-Unterstützung](#async-unterstützung)
