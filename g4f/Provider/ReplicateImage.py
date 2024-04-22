@@ -18,7 +18,10 @@ class ReplicateImage(AsyncGeneratorProvider, ProviderModelMixin):
         "39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
         "2b017d9b67edd2ee1401238df49d75da53c523f36e363881e057f5dc3ed3c5b2"
     ]
-    image_models = [default_model]
+    versions = {
+        "bytedance/sdxl-lightning-4step": "727e49a643e999d602a896c774a0658ffefea21465756a6ce24b7ea4165eba6a"
+    }
+    image_models = [default_model, "bytedance/sdxl-lightning-4step"]
 
     @classmethod
     async def create_async_generator(
@@ -56,7 +59,10 @@ class ReplicateImage(AsyncGeneratorProvider, ProviderModelMixin):
             'sec-ch-ua-platform': '"macOS"',
         }
         if version is None:
-            version = random.choice(cls.default_versions)
+            if model in cls.versions:
+                version = cls.versions[model]
+            else:
+                version = random.choice(cls.default_versions)
         if api_key is not None:
             headers["Authorization"] = f"Bearer {api_key}"
         async with StreamSession(

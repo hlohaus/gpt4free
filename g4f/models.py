@@ -25,7 +25,6 @@ from .Provider import (
     Llama,
     OpenaiChat,
     PerplexityLabs,
-    Replicate,
     Pi,
     Vercel,
     You,
@@ -144,7 +143,7 @@ llama2_70b = Model(
 llama3_8b_instruct = Model(
     name          = "meta-llama/Meta-Llama-3-8B-Instruct",
     base_provider = "meta",
-    best_provider = RetryProvider([Llama, DeepInfra, Replicate])
+    best_provider = RetryProvider([Llama, DeepInfra])
 )
 
 llama3_70b_instruct = Model(
